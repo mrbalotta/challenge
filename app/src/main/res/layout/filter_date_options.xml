@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:background="@color/snow"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <include layout="@layout/delimiters"/>
+
+    <TextView
+            android:hint="@string/from"
+            android:textAppearance="@style/FilterTextInput"
+            style="@style/FilterTextInput"
+            android:id="@+id/firstTxt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginBottom="@dimen/highest_margin"
+            android:layout_marginTop="@dimen/highest_margin"
+            android:layout_marginStart="@dimen/higher_margin"
+            android:layout_marginEnd="@dimen/normal_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/delimiters"
+            app:layout_constraintVertical_bias="0.0"
+    />
+
+    <TextView
+            android:hint="@string/to"
+            android:textAppearance="@style/FilterTextInput"
+            style="@style/FilterTextInput"
+            android:id="@+id/secondTxt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginStart="@dimen/normal_margin"
+            android:layout_marginTop="@dimen/highest_margin"
+            android:layout_marginEnd="@dimen/higher_margin"
+            android:layout_marginBottom="@dimen/highest_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/guideline"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/delimiters"
+            app:layout_constraintVertical_bias="0.0"
+    />
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.5"
+            android:orientation="vertical"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/pacific_ocean</color>
+    <color name="colorPrimaryDark">@color/cornflower_blue</color>
+    <color name="colorAccent">@color/congress_blue</color>
+
+    <color name="sky">#701594D6</color>
+    <color name="violet">#80804ED4</color>
+    <color name="white">#fcfcfc</color>
+    <color name="snow">#fff</color>
+
+    <color name="cornflower_blue">#0077c1</color>
+    <color name="pacific_ocean">#0091d1</color>
+    <color name="turquoise">#0097ce</color>
+    <color name="congress_blue">#004c90</color>
+    <color name="buddha_gold">#80d1ae00</color>
+    <color name="malachite">#8000d13f</color>
+    <color name="pistachio">#8092d100</color>
+    <color name="granadier">#80d14600</color>
+    <color name="dove_grey">#868686</color>
+    <color name="greyish">#40868686</color>
+    <color name="gainsboro">#80DCDCDC</color>
+
+</resources>

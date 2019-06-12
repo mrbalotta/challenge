@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">wirecard</string>
+    <string name="password">Senha</string>
+    <string name="login_or_email">Login ou email</string>
+    <string name="access_my_account">Acessar Minha Conta</string>
+    <string name="filter">Filtro</string>
+    <string name="paid">Pago</string>
+    <string name="reverted">Revertido</string>
+    <string name="not_paid">Não Pago</string>
+    <string name="waiting">Aguardando</string>
+    <string name="greater_than">Maior que</string>
+    <string name="less_than">Menor que</string>
+    <string name="greater_equal_to">Maior igual a</string>
+    <string name="less_equal_to">Menor igual a</string>
+    <string name="between">Entre X e Y</string>
+    <string name="in_range">Igual a</string>
+    <string name="to">Até</string>
+    <string name="from">De</string>
+    <string name="value">Valor</string>
+    <string name="date">Data</string>
+    <string name="apply_filters">APLICAR</string>
+    <string name="clear_filters">LIMPAR</string>
+    <string name="boleto">Boleto</string>
+    <string name="credit_card">Cartão de Crédito</string>
+    <string name="debit_card">Cartão de Débito</string>
+    <string name="online_bank_debit">Débito Online</string>
+    <string name="online_bank_financing">Financiamento Online</string>
+    <string name="wallet">Carteira Digital</string>
+</resources>

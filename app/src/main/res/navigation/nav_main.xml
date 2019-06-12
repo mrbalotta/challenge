@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/nav_main" app:startDestination="@id/splashFragment">
+
+    <fragment android:id="@+id/splashFragment" android:name="br.com.wirecard.feature.splash.view.SplashFragment"
+              android:label="SplashFragment">
+        <action android:id="@+id/action_splash_to_login" app:destination="@id/loginFragment"
+        />
+        <action android:id="@+id/action_splash_to_orderList" app:destination="@id/orderListFragment"/>
+    </fragment>
+    <fragment android:id="@+id/loginFragment" android:name="br.com.wirecard.feature.login.view.LoginFragment"
+              android:label="LoginFragment">
+        <action android:id="@+id/action_login_to_orderList" app:destination="@id/orderListFragment"/>
+    </fragment>
+    <fragment android:id="@+id/orderListFragment" android:name="br.com.wirecard.feature.order.view.ui.OrderListFragment"
+              android:label="OrderListFragment">
+        <action android:id="@+id/action_orderList_to_orderDetail"
+                app:destination="@id/orderDetailFragment"/>
+    </fragment>
+    <fragment android:id="@+id/orderDetailFragment"
+              android:name="br.com.wirecard.feature.order.view.ui.OrderDetailFragment"
+              android:label="OrderDetailFragment"/>
+</navigation>
