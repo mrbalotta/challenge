@@ -20,7 +20,7 @@ abstract class LoggedInRepository(baseUrl: String, private val dao: SessionDAO):
 
     override fun getService(interceptors: List<Interceptor>): RetrofitAPI {
         val authInterceptor = getAuthInterceptor()
-        val loggingInterceptor = HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BASIC }
+        val loggingInterceptor = HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
         val list = mutableListOf(authInterceptor, loggingInterceptor).apply { addAll(interceptors) }
         return RetrofitAPIBuilder(baseUrl, list).build()
     }

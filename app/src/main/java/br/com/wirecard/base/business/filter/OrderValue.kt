@@ -3,7 +3,7 @@ package br.com.wirecard.base.business.filter
 import br.com.wirecard.base.business.delimiter.*
 import br.com.wirecard.base.business.dto.Either
 
-class OrderValue: Filter<Delimiter>("value") {
+class OrderValue: Filter<Delimiter>("wrappedValue") {
     companion object {
         fun greaterThan(value: Number): OrderValue {
             return OrderValue().apply { set(GreaterThan(Either.left(value))) }

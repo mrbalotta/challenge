@@ -1,8 +1,10 @@
 package br.com.wirecard.plugin.repository
 
+import android.util.Log
 import androidx.annotation.VisibleForTesting
 import androidx.annotation.VisibleForTesting.PRIVATE
 import androidx.annotation.VisibleForTesting.PROTECTED
+import br.com.wirecard.base.business.exception.AuthenticationException
 import br.com.wirecard.base.business.exception.HttpException
 import br.com.wirecard.base.business.exception.InternetConnectionException
 import br.com.wirecard.plugin.api.RetrofitAPI
@@ -16,6 +18,10 @@ abstract class BaseRepository(protected val baseUrl: String) {
         try {
             val response = call.execute()
             if(response.isSuccessful) return response.body()!!
+            if(response.code() == 401) {
+                Log.w("ALE", "code is 401")
+                throw AuthenticationException()
+            }
             throw HttpException(response.code(), response.message())
         } catch(e: IOException) {
             e.printStackTrace()

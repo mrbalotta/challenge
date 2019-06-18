@@ -20,5 +20,8 @@
     </fragment>
     <fragment android:id="@+id/orderDetailFragment"
               android:name="br.com.wirecard.feature.order.view.ui.OrderDetailFragment"
-              android:label="OrderDetailFragment"/>
+              android:label="OrderDetailFragment">
+        <argument android:name="orderId" app:argType="string"/>
+    </fragment>
+    <action android:id="@+id/action_global_login" app:destination="@id/loginFragment"/>
 </navigation>

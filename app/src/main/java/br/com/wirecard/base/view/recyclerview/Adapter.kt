@@ -14,9 +14,7 @@ abstract class Adapter<P>(items: List<P> = emptyList(), protected val listener: 
     protected abstract fun getFactoryMediator(): ViewHolderFactoryMediator<P>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder<P> {
-        val o = getFactoryMediator().getViewHolderFactory(viewType).create(parent)
-        Log.w("ORDERLIST", "VH = ${o.javaClass.simpleName}")
-        return o
+        return getFactoryMediator().getViewHolderFactory(viewType).create(parent)
     }
 
     open fun add(value: P?) {
@@ -33,7 +31,8 @@ abstract class Adapter<P>(items: List<P> = emptyList(), protected val listener: 
     fun replace(values: List<P>) {
         list.clear()
         list.addAll(values)
-        notifyItemRangeChanged(0, list.size)
+        notifyDataSetChanged()
+        //notifyItemRangeChanged(0, list.size)
     }
 
     override fun getItemViewType(position: Int): Int {

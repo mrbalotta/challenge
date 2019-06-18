@@ -72,16 +72,37 @@
 
     <style name="FilterTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox"/>
 
-    <style name="FilterTextInput" parent="TextAppearance.AppCompat">
+    <style name="BaseInput" parent="TextAppearance.AppCompat">
         <item name="fontFamily">@font/oxygen_regular</item>
+        <item name="android:padding">@dimen/high_padding</item>
+    </style>
+
+    <style name="FilterTextInput" parent="BaseInput">
         <item name="android:background">@drawable/grey_background</item>
-        <item name="android:padding">@dimen/higher_padding</item>
     </style>
 
     <style name="LoginTextInput" parent="TextAppearance.AppCompat">
         <item name="fontFamily">@font/oxygen_regular</item>
         <item name="android:textColorHint">@color/white</item>
         <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Heading" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/oxygen_regular</item>
+        <item name="android:textColor">@color/dove_grey</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="TransactionAppearance" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/oxygen_regular</item>
+        <item name="android:textColor">@color/dove_grey</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="OrderIdAppearance" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/oxygen_bold</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
 </resources>

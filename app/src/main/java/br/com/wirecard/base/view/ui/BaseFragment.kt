@@ -1,13 +1,17 @@
 package br.com.wirecard.base.view.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.NavOptions
+import androidx.navigation.fragment.findNavController
 import br.com.wirecard.R
+import br.com.wirecard.base.business.exception.AuthenticationException
 import br.com.wirecard.base.business.exception.HttpException
 import br.com.wirecard.base.business.exception.InternetConnectionException
 import br.com.wirecard.base.gateway.mvvm.BaseViewModel
@@ -67,11 +71,22 @@ abstract class BaseFragment<V: BaseViewModel>: Fragment() {
 
     private fun handleThrowable(error: Throwable?) {
         when(error) {
+            is AuthenticationException -> handleAuthError()
             is HttpException -> handleHttpError(error)
             is InternetConnectionException -> handleConnectionError()
             else -> handleError(error)
         }
     }
+
+    protected open fun handleAuthError() {
+        Log.w("ALE", "handleAuthError")
+        findNavController()
+            .navigate(R.id.action_global_login, null,
+                NavOptions.Builder()
+                    .setPopUpTo(R.id.splashFragment, true)
+                    .build())
+    }
+
     protected open fun handleHttpError(error: HttpException) {}
 
     protected open fun handleConnectionError() {}

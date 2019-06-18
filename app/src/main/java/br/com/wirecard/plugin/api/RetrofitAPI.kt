@@ -23,7 +23,7 @@ interface RetrofitAPI {
 
 
     @GET("orders")
-    fun getOrders(@Query("filters", encoded = true) filters: OrderFilters,
+    fun getOrders(@Query("filters") filters: String,
                   @Query("limit") limit: Int,
                   @Query("offset") offset: Int): Call<OrderList>
 

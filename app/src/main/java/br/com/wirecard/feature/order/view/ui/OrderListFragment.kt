@@ -3,9 +3,11 @@ package br.com.wirecard.feature.order.view.ui
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.wirecard.R
+import br.com.wirecard.base.business.dto.Pageable
 import br.com.wirecard.base.view.recyclerview.InfiniteScrollListener
 import br.com.wirecard.base.view.ui.BaseFragment
 import br.com.wirecard.feature.order.business.dto.OrderList
@@ -53,18 +55,33 @@ class OrderListFragment: BaseFragment<OrderListViewModel>() {
     }
 
     override fun handleSuccess(value: Any?) {
-        if(value is OrderList) handleOrderList(value)
+        if(value is Pageable<*> && value.wrappedValue is OrderList) {
+            when {
+                value.page > 0 -> handleOrderListPage(value.wrappedValue, value.hasMoreItems)
+                else -> handleOrderList(value.wrappedValue, value.hasMoreItems)
+            }
+        }
     }
 
     override fun handleError(error: Throwable?) {
         Log.e("ORDERLIST", "Error", error)
+        adapter.hasMoreItems(false)
     }
 
-    private fun handleOrderList(value: OrderList) {
+    private fun handleOrderListPage(value: OrderList, hasMoreItems: Boolean) {
+        Log.w("ORDERLIST", "handleOrderListPage")
+
+        scrollListener.setLoaded()
+        adapter.addAll(value.orders)
+        adapter.hasMoreItems(hasMoreItems)
+    }
+
+    private fun handleOrderList(value: OrderList, hasMoreItems: Boolean) {
         Log.w("ORDERLIST", "handleOrderList")
         adapter.total += value.summary.count
-        scrollListener.setLoaded()
-        value.orders.forEach {adapter.add(it)}
+        if(hasMoreItems) scrollListener.setLoaded()
+        adapter.replace(value.orders)
+        adapter.hasMoreItems(hasMoreItems)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -87,9 +104,12 @@ class OrderListFragment: BaseFragment<OrderListViewModel>() {
 
     private fun getNextOrders() {
         Log.w("ORDERLIST", "getNextOrders")
+        viewModel.getNextOrders()
     }
 
     private fun onOrderSelectionListener(order: Order) {
         Log.w("ORDERLIST", "Order selected #${order.id}")
+        val action = OrderListFragmentDirections.actionOrderListToOrderDetail(order.id)
+        findNavController().navigate(action)
     }
 }

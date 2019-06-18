@@ -6,6 +6,6 @@ import br.com.wirecard.model.Order
 
 
 interface OrderRepository {
-    fun getOrders(filters: OrderFilters, limit: Int = 0, offset: Int = 0): OrderList
+    fun getOrders(filters: OrderFilters, limit: Int = 100, offset: Int = 0): OrderList
     fun getOrderById(orderId: String): Order
 }

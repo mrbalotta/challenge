@@ -22,8 +22,8 @@ class OrderListAdapter(listener: (Order)->Unit): Adapter<Order>(listener=listene
         if(position < list.size && list[position] != null) holder.bind(list[position]!!, listener)
     }
 
-    fun noMoreItems() {
-        hasMoreItems = false
+    fun hasMoreItems(hasMore: Boolean) {
+        hasMoreItems = hasMore
         notifyDataSetChanged()
     }
 }

@@ -7,8 +7,8 @@ import br.com.wirecard.base.business.filter.Filter
 
 abstract class AbstractFilters {
     protected val map: MutableMap<String, Delimiter> = mutableMapOf()
-    protected val filterDelimiter = "|"
-    protected val pairDelimiter = "::"
+    private val filterDelimiter = "|"
+    private val pairDelimiter = "::"
 
     override fun toString(): String {
         var filters = ""

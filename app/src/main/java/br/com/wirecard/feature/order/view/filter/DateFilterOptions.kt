@@ -59,50 +59,9 @@ class DateFilterOptions: MultiDelimiterFilterOptions() {
     private fun onDateSetListener() {
         val firstDate = firstTxt.tag as Date? ?: Date()
         val secondDate = secondTxt.tag as Date? ?: Date()
-        val delimiter = buildDelimiter(firstDate, secondDate)
+        val delimiter = DateDelimiterHelper(delimiterBuilder).buildDelimiter(firstDate, secondDate)
         val filter = CreatedAt().apply{set(delimiter)}
         viewModel.filters.add(filter)
-    }
-
-    private fun buildDelimiter(firstDate: Date, secondDate: Date): Delimiter? {
-        return when (delimiterBuilder) {
-            is Between.Builder -> {
-                val builder = delimiterBuilder as Between.Builder
-                buildBetween(builder, firstDate, secondDate)
-            }
-            is InRange.Builder -> {
-                val builder = delimiterBuilder as InRange.Builder
-                buildInRange(builder, firstDate)
-            }
-            is NumberOrDateDelimiterBuilder -> {
-                val builder = delimiterBuilder as NumberOrDateDelimiterBuilder
-                buildNumberOrDateDelimiter(builder, firstDate)
-            }
-            else -> null
-        }
-    }
-
-    private fun buildNumberOrDateDelimiter(builder: NumberOrDateDelimiterBuilder, firstDate: Date): Delimiter? {
-        return with(builder) {
-            add(firstDate)
-            build()
-        }
-    }
-
-    private fun buildBetween(builder: Between.Builder,
-                             firstDate: Date,
-                             secondDate: Date): Delimiter? {
-        return with(builder) {
-            add(firstDate, secondDate)
-            build()
-        }
-    }
-
-    private fun buildInRange(builder: InRange.Builder, firstDate: Date): Delimiter? {
-        return with(builder) {
-            add(firstDate)
-            build()
-        }
     }
 
     private fun injectDateFormatterStrategy(): DateFormatterStrategy {

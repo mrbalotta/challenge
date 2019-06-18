@@ -2,7 +2,7 @@ package br.com.wirecard.base.business.delimiter
 
 import java.util.*
 
-class InRange(private val range: List<String>): RangeDelimiter() {
+class InRange(val range: List<String>): RangeDelimiter() {
     constructor(dateRange: Array<Date>): this(dateRange.map { formatter.format(it) })
     constructor(valueRange: Array<Number>): this(valueRange.map { it.toString() })
 
